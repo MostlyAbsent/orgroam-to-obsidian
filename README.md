@@ -16,7 +16,7 @@ into. This is that.
 
 1. Clone in this repository
 3. Copy your org-roam.db into the projects input folder
-4. Copy your org roam folder into the projects input/org/roam folder
+4. Copy your org roam folder into the projects input/org-roam folder
 6. Call lein run
 
 ## License
