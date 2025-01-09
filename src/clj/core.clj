@@ -1,4 +1,4 @@
-(ns orgroam-to-obsidian.core
+(ns core
   (:require [clojure.java.jdbc :as j]
             [honey.sql :as sql]
             [clojure.string :as str]
@@ -34,8 +34,7 @@
 (defn import-contents [results]
   (into []
         (for [row results]
-          (do (prn (:title row))
-              (import-row-contents row)))))
+          (import-row-contents row))))
 
 (defn import-files [results]
   (-> results
@@ -82,7 +81,8 @@
 (defn write-files [results]
   (doseq [row results]
     (let [filename (md-filename (:title row))]
-      (spit (str "./output/" filename) (:content row)))))
+      (do (prn filename)
+          (spit (str "./output/" filename) (:content row))))))
 
 (defn run []
   (-> dbresults
@@ -90,6 +90,6 @@
       transform-result-links
       write-files))
 
-(defn -main [& _]
+(defn main [& _]
   (run)
   (shutdown-agents))

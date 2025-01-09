@@ -1,4 +1,4 @@
-(ns orgroam-to-obsidian.core-test
+(ns core-test
   (:require [clojure.test :refer :all]
             [orgroam-to-obsidian.core :refer :all]))
 
